@@ -127,7 +127,7 @@ get "/catchtoken" do
       raise "exp verification failed"
     end
 
-    jwt.to_json
+    "OK"
   rescue JSON::JWS::VerificationFailed => e
     status 400
     e.to_s
