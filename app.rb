@@ -117,7 +117,17 @@ get "/catchtoken" do
       raise "iss verification failed"
     end
 
-    jwt.to_s
+    #verify audience
+    if jwt['aud'] != CLIENT_ID
+      raise "aud verification failed"
+    end
+
+    #verify exp
+    if Time.at(jwt['exp']) < Time.now
+      raise "exp verification failed"
+    end
+
+    jwt.to_json
   rescue JSON::JWS::VerificationFailed => e
     status 400
     e.to_s
