@@ -15,8 +15,6 @@ CLIENT_ID = "YOUR_CLIENT_ID"
 CLIENT_SECRET = "YOUR_CLIENT_SECRET"
 REDIRECT_URI = "http://localhost:4567/oauth2callback"
 
-authorization = OpenIDConnect::Google.instance
-
 module OpenIDConnect
   class Google
     include Singleton
